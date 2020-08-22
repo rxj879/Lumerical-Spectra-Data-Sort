@@ -24,6 +24,8 @@ class PickleJar:
 
 #########################
         """Here are the general plot style options to add to the GUI"""
+
+        
         self.OverrideXAxisOption = False
         self.OverrideYAxisOption = False
         self.X_Axis_LowLim = float
@@ -56,6 +58,11 @@ class PickleJar:
         self.MinorYgridlinesOption = False
         self.PlotTextSize = 10
         self.LabelsFontSize = 8
+        self.Plotlinewidth = 0.5
+        self.MinorGridlinewidth = 0.3
+        self.MajorGridlinewidth = 0.4
+        
+        
         self.Y_AxisTitle = 'Intensity (arb. units)'
         self.X_AxisTitle = 'Wavelength (nm)'
         self.Legend_loc= 'upper left' 
@@ -64,6 +71,8 @@ class PickleJar:
         self.Y_axis_Title_Pad = 5.0
         self.X_axis_Title_Pad = 5.0
         
+        self.Norm_RadioBoxOption = 0
+        self.Plot_RadioBoxOption = 0
         """"MultiPlot Options"""
         self.MultiPlot_shareyOption = False
         self.MultiPlot_sharexOption = True
@@ -98,7 +107,12 @@ class PickleJar:
         """Save general plot preferences"""
         print("Saving general preferences...")
         File = Directory+"\General_prefs.pickle"
-        pickle.dump([self.OverrideXAxisOption,
+        pickle.dump([self.Plotlinewidth,
+                     self.MinorGridlinewidth,
+                     self.MajorGridlinewidth,
+                     self.Norm_RadioBoxOption,
+                     self.Plot_RadioBoxOption,
+                     self.OverrideXAxisOption,
                      self.OverrideYAxisOption,
                      self.X_Axis_LowLim,
                      self.X_Axis_HiLim,
