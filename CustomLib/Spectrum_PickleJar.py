@@ -61,7 +61,9 @@ class PickleJar:
         self.Plotlinewidth = 0.5
         self.MinorGridlinewidth = 0.3
         self.MajorGridlinewidth = 0.4
-        
+
+        self.MajorGridColour = 'Grey'
+        self.MinorGridColour = 'Light Grey'
         
         self.Y_AxisTitle = 'Intensity (arb. units)'
         self.X_AxisTitle = 'Wavelength (nm)'
