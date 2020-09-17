@@ -61,6 +61,18 @@ def Find_Line(File , Text_Search):
     f.close()
     return index
 
+def Read_Line(File, Line_Num):
+    with open(File, 'r') as f:
+        content = f.readlines()
+    return content[Line_Num]
+
+def Determine_ScaleFactor(String):
+    if 'lambda(m)' in String:
+        ScaleFactor = 1E9
+    elif 'lambda(microns)' in String:
+        ScaleFactor = 1E3
+    return ScaleFactor
+        
 def Extract_NumberData(string):
     """ Function to import data in scientific notation """
     scinot = re.compile('[+\-]?(?:0|[1-9]\d*)(?:\.\d*)?(?:[eE][+\-]?\d+)')

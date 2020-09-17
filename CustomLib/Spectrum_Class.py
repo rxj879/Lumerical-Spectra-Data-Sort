@@ -18,7 +18,12 @@ import glob, os
 import numpy as np
 # Import the mathematical libraries
 
-from CustomLib.Spectrum_Funcs import Get_Dir, Find_Line, Create_Directory, path_leaf
+from CustomLib.Spectrum_Funcs import (Get_Dir, 
+                                      Find_Line, 
+                                      Create_Directory, 
+                                      path_leaf, 
+                                      Read_Line,
+                                      Determine_ScaleFactor)
 #Import custom functions required
 
 from CustomLib.Spectrum_PickleJar import PickleJar
@@ -50,12 +55,14 @@ class DataClass_Spectra:
             Rows_to_End = Line_EndNumList[1] - Line_StartNumList[1] - 3
             Data=np.genfromtxt(file, delimiter = ',', skip_header = Rows_to_Skip, 
                                max_rows = Rows_to_End); 
-            Data[:,0] *= 1000.0 
+            ColumnHeading1 = Read_Line(File_Path, Line_StartNumList[1])
+            Scale_Factor = Determine_ScaleFactor(ColumnHeading1)
+            Data[:,0] *= Scale_Factor
             self.Data_E_Field.append(Data)
             Line_StartNumList = Find_Line(File_Path , 'Re(H)');
             Rows_to_Skip = Line_StartNumList[1] + 1
             Data=np.genfromtxt(file, delimiter = ',', skip_header = Rows_to_Skip); 
-            Data[:,0] *= 1000.0 
+            Data[:,0] *= Scale_Factor
             self.Data_H_Field.append(Data)
 
     def Write_New_Files(self):
