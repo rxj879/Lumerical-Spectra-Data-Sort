@@ -65,7 +65,7 @@ class PickleJar:
         self.MajorGridColour = 'Grey'
         self.MinorGridColour = 'Light Grey'
         
-        self.Y_AxisTitle = 'Intensity (arb. units)'
+        self.Y_AxisTitle = 'Amplitude (arb. units)'
         self.X_AxisTitle = 'Wavelength (nm)'
         self.Legend_loc= 'upper left' 
         self.Y_axis_Label_Pad = 5.0
